@@ -52,5 +52,5 @@ medioHermanos(Hermano1, Hermano2) :-
   compartenPadre(Hermano1, Hermano2).
 
 medioHermanos(Hermano1, Hermano2) :-
-  not(compartenPadre(Hermano1, Hermano2)),
-  compartenMadre(Hermano1, Hermano2).
+  compartenMadre(Hermano1, Hermano2),
+  not(compartenPadre(Hermano1, Hermano2)).
