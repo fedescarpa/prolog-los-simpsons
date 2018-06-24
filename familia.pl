@@ -21,5 +21,6 @@ tieneHijo(Persona) :-
   progenitorDe(Persona, _).
 
 hermanos(Hermano1, Hermano2) :-
+  Hermano1 \= Hermano2,
   progenitorDe(Progenitor, Hermano1),
   progenitorDe(Progenitor, Hermano2).
