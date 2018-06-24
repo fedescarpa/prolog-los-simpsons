@@ -8,19 +8,19 @@ madreDe(marge, bart).
 madreDe(marge, lisa).
 madreDe(marge,maggie).
 
-progenitorDe(Progenitor, Hijo) :- 
+progenitorDe(Progenitor, Hijo) :-
   padreDe(Progenitor, Hijo).
 
-progenitorDe(Progenitor, Hijo) :- 
+progenitorDe(Progenitor, Hijo) :-
   madreDe(Progenitor, Hijo).
 
-hijoDe(Hijo, Progenitor) :- 
+hijoDe(Hijo, Progenitor) :-
   progenitorDe(Progenitor, Hijo).
 
-tieneHijo(Persona) :- 
+tieneHijo(Persona) :-
   progenitorDe(Persona, _).
 
 hermanos(Hermano1, Hermano2) :-
-  Hermano1 \= Hermano2,
   progenitorDe(Progenitor, Hermano1),
-  progenitorDe(Progenitor, Hermano2).
+  progenitorDe(Progenitor, Hermano2),
+  Hermano1 \= Hermano2.
