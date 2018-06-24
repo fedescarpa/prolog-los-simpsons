@@ -75,3 +75,6 @@ edad(lisa, 08).        % 09 de Mayo de 1981.
 edad(maggie, 01).      % 16 de Junio de 1988.
 edad(ling, 01).        % 03 de mayo de 1988.
 
+estaHarto(Personaje) :-
+  forall(hijoDe(Hijo, Personaje), (edad(Hijo, Edad), Edad < 12)).
+
