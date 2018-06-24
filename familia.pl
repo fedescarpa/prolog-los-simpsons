@@ -76,8 +76,5 @@ edad(maggie, 01).      % 16 de Junio de 1988.
 edad(ling, 01).        % 03 de mayo de 1988.
 
 estaHarto(Personaje) :-
-  personaje(Personaje),
+  tieneHijo(Personaje),
   forall(hijoDe(Hijo, Personaje), (edad(Hijo, Edad), Edad < 12)).
-
-personaje(Personaje) :-
-  edad(Personaje, _).
