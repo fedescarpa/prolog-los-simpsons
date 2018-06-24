@@ -77,4 +77,8 @@ edad(ling, 01).        % 03 de mayo de 1988.
 
 estaHarto(Personaje) :-
   tieneHijo(Personaje),
-  forall(hijoDe(Hijo, Personaje), (edad(Hijo, Edad), Edad < 12)).
+  forall(hijoDe(Hijo, Personaje), joven(Hijo)).
+
+joven(Personaje) :-
+  edad(Personaje, Edad),
+  Edad < 12.
