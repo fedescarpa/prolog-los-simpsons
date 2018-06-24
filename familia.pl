@@ -48,8 +48,8 @@ compartenMadre(Hermano1, Hermano2) :-
   Hermano1 \= Hermano2.
 
 medioHermanos(Hermano1, Hermano2) :-
-  not(compartenMadre(Hermano1, Hermano2)),
-  compartenPadre(Hermano1, Hermano2).
+  compartenPadre(Hermano1, Hermano2),
+  not(compartenMadre(Hermano1, Hermano2)).
 
 medioHermanos(Hermano1, Hermano2) :-
   compartenMadre(Hermano1, Hermano2),
