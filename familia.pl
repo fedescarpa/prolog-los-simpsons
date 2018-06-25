@@ -57,25 +57,25 @@ medioHermanos(Hermano1, Hermano2) :-
 
 % Las edades de los simpson se calculan como si la fecha actual fuese (18 de diciembre de 1989)
 
-hoy(18, 12, 1989).
+hoy(fecha(18, 12, 1989)).
 
-personaje(abe,        18, 12, 1927).
-personaje(edwina,     15, 03, 1928).
-personaje(mona,       14, 10, 1928).
-personaje(gaby,       20, 05, 1932).
-personaje(homero,     12, 05, 1956).
-personaje(abbie,      13, 11, 1945).
-personaje(herbert,    22, 08, 1953).
-personaje(jacqueline, 09, 07, 1928).
-personaje(clancy,     12, 08, 1927).
-personaje(marge,      08, 12, 1955).
-personaje(patty,      02, 02, 1953).
-personaje(selma,      02, 02, 1953).
-personaje(bart,       01, 04, 1979).
-personaje(hugo,       01, 04, 1979).
-personaje(lisa,       09, 05, 1981).
-personaje(maggie,     16, 06, 1988).
-personaje(ling,       03, 05, 1988).
+personaje(abe, fecha(18, 12, 1927)).
+personaje(edwina, fecha(15, 03, 1928)).
+personaje(mona, fecha(14, 10, 1928)).
+personaje(gaby, fecha(20, 05, 1932)).
+personaje(homero, fecha(12, 05, 1956)).
+personaje(abbie, fecha(13, 11, 1945)).
+personaje(herbert, fecha(22, 08, 1953)).
+personaje(jacqueline, fecha(09, 07, 1928)).
+personaje(clancy, fecha(12, 08, 1927)).
+personaje(marge, fecha(08, 12, 1955)).
+personaje(patty, fecha(02, 02, 1953)).
+personaje(selma, fecha(02, 02, 1953)).
+personaje(bart, fecha(01, 04, 1979)).
+personaje(hugo, fecha(01, 04, 1979)).
+personaje(lisa, fecha(09, 05, 1981)).
+personaje(maggie, fecha(16, 06, 1988)).
+personaje(ling, fecha(03, 05, 1988)).
 
 estaHarto(Personaje) :-
   tieneHijo(Personaje),
@@ -86,26 +86,26 @@ joven(Personaje) :-
   Edad < 12.
 
 edad(Personaje, Edad) :-
-  personaje(Personaje, DiaP, MesP, AnioP),
-  hoy(DiaActual, MesActual, AnioActual),
-  edadSegunFechas(DiaP, MesP, AnioP, DiaActual, MesActual, AnioActual, Edad).
+  personaje(Personaje, fecha(DiaP, MesP, AnioP)),
+  hoy(fecha(DiaActual, MesActual, AnioActual)),
+  edadSegunFechas(fecha(DiaP, MesP, AnioP), fecha(DiaActual, MesActual, AnioActual), Edad).
 
-edadSegunFechas(_, Mes1, Anio1, _, Mes2, Anio2, Edad) :-
+edadSegunFechas(fecha(_, Mes1, Anio1), fecha(_, Mes2, Anio2), Edad) :-
   Anio2 >= Anio1,
   Mes1 > Mes2,
   Edad is Anio2 - Anio1.
 
-edadSegunFechas(Dia1, Mes, Anio1, Dia2, Mes, Anio2, Edad) :-
+edadSegunFechas(fecha(Dia1, Mes, Anio1), fecha(Dia2, Mes, Anio2), Edad) :-
   Anio2 >= Anio1,
   Dia1 >= Dia2,
   Edad is Anio2 - Anio1.
 
-edadSegunFechas(Dia1, Mes, Anio1, Dia2, Mes, Anio2, Edad) :-
+edadSegunFechas(fecha(Dia1, Mes, Anio1), fecha(Dia2, Mes, Anio2), Edad) :-
   Anio2 >= Anio1,
   Dia1 < Dia2,
   Edad is Anio2 - Anio1 - 1.
 
-edadSegunFechas(_, Mes1, Anio1, _, Mes2, Anio2, Edad) :-
+edadSegunFechas(fecha(_, Mes1, Anio1), fecha(_, Mes2, Anio2), Edad) :-
   Anio2 >= Anio1,
   Mes1 < Mes2,
   Edad is Anio2 - Anio1 - 1.
