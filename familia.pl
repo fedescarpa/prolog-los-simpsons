@@ -86,9 +86,9 @@ joven(Personaje) :-
   Edad < 12.
 
 edad(Personaje, Edad) :-
-  personaje(Personaje, fecha(DiaP, MesP, AnioP)),
-  hoy(fecha(DiaActual, MesActual, AnioActual)),
-  edadSegunFechas(fecha(DiaP, MesP, AnioP), fecha(DiaActual, MesActual, AnioActual), Edad).
+  personaje(Personaje, FechaNacimiento),
+  hoy(FechaActual),
+  edadSegunFechas(FechaNacimiento, FechaActual, Edad).
 
 edadSegunFechas(fecha(_, Mes1, Anio1), fecha(_, Mes2, Anio2), Edad) :-
   Anio2 >= Anio1,
