@@ -92,20 +92,20 @@ edad(Personaje, Edad) :-
 
 edadSegunFechas(fecha(_, Mes1, Anio1), fecha(_, Mes2, Anio2), Edad) :-
   Anio2 >= Anio1,
-  Mes1 > Mes2,
+  Mes1 < Mes2,
   Edad is Anio2 - Anio1.
 
 edadSegunFechas(fecha(Dia1, Mes, Anio1), fecha(Dia2, Mes, Anio2), Edad) :-
   Anio2 >= Anio1,
   Dia1 >= Dia2,
-  Edad is Anio2 - Anio1.
+  Edad is Anio2 - Anio1 - 1.
 
 edadSegunFechas(fecha(Dia1, Mes, Anio1), fecha(Dia2, Mes, Anio2), Edad) :-
   Anio2 >= Anio1,
   Dia1 < Dia2,
-  Edad is Anio2 - Anio1 - 1.
+  Edad is Anio2 - Anio1.
 
 edadSegunFechas(fecha(_, Mes1, Anio1), fecha(_, Mes2, Anio2), Edad) :-
   Anio2 >= Anio1,
-  Mes1 < Mes2,
+  Mes1 > Mes2,
   Edad is Anio2 - Anio1 - 1.
